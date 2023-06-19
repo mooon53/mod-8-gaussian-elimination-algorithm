@@ -2,17 +2,17 @@ import Clash.Prelude
 import Test.HUnit
 
 type Value = Maybe (Signed 8)
-type Row = Vector 8 Value
-type Matrix = Vector 8 Row
+type Row = Vec 8 Value
+type Matrix = Vec 8 Row
 
 data RowOperation = Add Int Int
-                    |Mul Num Int
+                    |Mul Int Int
                     |Swap Int Int
 
 addMaybe :: Value -> Value -> Value
 addMaybe Nothing a = a
 addMaybe a Nothing = a
-addMaybe a b = a + b
+addMaybe (Just a) (Just b) = Just (a + b)
 
 -- Test cases for addMaybe function
 addMaybeTests =
@@ -23,7 +23,7 @@ addMaybeTests =
           (Just 8)
     , TestCase $
         assertEqual "addMaybe test 2"
-          (addMaybde (Just (-5)) (Just 3))
+          (addMaybe (Just (-5)) (Just 3))
           (Just (-2))
     , TestCase $
         assertEqual "addMaybe test 3"
@@ -40,7 +40,6 @@ addMaybeTests =
     ]
 
 -- Run all the test cases
-runTests :: IO ()
 runTests = do
   putStrLn "Running addMaybe tests:"
   runTestTT addMaybeTests

@@ -1,0 +1,93 @@
+{
+    "components": [
+        "topEntity"
+    ],
+    "dependencies": {
+        "transitive": []
+    },
+    "domains": {},
+    "files": [
+        {
+            "name": "Main_topEntity_types.vhdl",
+            "sha256": "caf3959166c32edbee6766d01003d773534f07c674316466579675625cd184c3"
+        },
+        {
+            "name": "topEntity.vhdl",
+            "sha256": "18935f17e39ddb283d030f08e8d851a39986784f7e193fb5bc5138f2fb4cfbc9"
+        }
+    ],
+    "flags": [
+        20,
+        20
+    ],
+    "hash": "7efb54a3dc839ffb75d49109e40275254a518eca91248d6f33613ff0ac237a80",
+    "top_component": {
+        "name": "topEntity",
+        "ports_flat": [
+            {
+                "direction": "in",
+                "is_clock": false,
+                "name": "carg",
+                "type_name": "carg.Main_topEntity_types.RowOperation",
+                "width": 146
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_0",
+                "type_name": "result_0.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_1",
+                "type_name": "result_1.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_2",
+                "type_name": "result_2.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_3",
+                "type_name": "result_3.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_4",
+                "type_name": "result_4.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_5",
+                "type_name": "result_5.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_6",
+                "type_name": "result_6.Main_topEntity_types.Maybe",
+                "width": 9
+            },
+            {
+                "direction": "out",
+                "is_clock": false,
+                "name": "result_7",
+                "type_name": "result_7.Main_topEntity_types.Maybe",
+                "width": 9
+            }
+        ]
+    },
+    "version": "unstable"
+}
