@@ -11,7 +11,62 @@ type MaybeValue = Maybe Value
 type Row = Vec 8 MaybeValue
 type Matrix = Vec 8 Row
 
+-- Bubble sort for 1 iteration
+sortV xs = map fst sorted :< (snd (last sorted))
+ where
+   lefts  = head xs :> map snd (init sorted)
+   rights = tail xs
+   sorted = zipWith compareSwapL lefts rights
 
+-- Compare and swap
+compareSwapL a b = if a < b then (a,b)
+                            else (b,a)
+
+sortVL xs = map fst sorted :< (snd (last sorted))
+ where
+   lefts  = head xs :> map snd (init sorted)
+   rights = tail xs
+   sorted = zipWith compareSwapL (lazyV lefts) rights
+
+-- Helper function to extract the values from MaybeValue
+extractValues :: Vec 8 (Maybe Value) -> Vec 8 Value
+extractValues = map (\v -> case v of { Just val -> val; _ -> 0 })
+
+
+-- Check if a value is zero
+isZero :: MaybeValue -> Bool
+isZero (Just val) = val == 0
+isZero _          = True
+
+-- Check if a row consists of only zeros
+isZeroRow :: Row -> Bool
+isZeroRow = all isZero
+
+-- Check each row in the matrix for being a zero row
+allZeroRows :: Matrix -> Vec 8 Bool
+allZeroRows = map isZeroRow
+
+
+-- Get the value at a specific row and column in the matrix
+getValue :: Matrix -> Index 8 -> Index 8 -> MaybeValue
+getValue matrix rowIdx colIdx = matrix !! rowIdx !! colIdx
+
+
+-- Check if the determinant of the matrix is zero
+isDeterminantZero :: Matrix -> Bool
+isDeterminantZero matrix =
+  let indices = indicesI :: Vec 8 (Index 8)
+      determinant = sum (imap (\colIdx col ->
+                                let a = getValue matrix 0 colIdx
+                                    b = getValue matrix 0 (colIdx + 1)
+                                    c = getValue matrix 1 colIdx
+                                    d = getValue matrix 1 (colIdx + 1)
+                                in case (a, b, c, d) of
+                                     (Just aVal, Just bVal, Just cVal, Just dVal) ->
+                                       aVal * dVal - bVal * cVal
+                                     _ -> 0
+                              ) indices)
+  in determinant == 0
 --add raw Rows or get vectors from given indices
 data RowOperation = Add Int Int
                     |Mul Value Int
