@@ -14,6 +14,10 @@ addMaybe Nothing a = a
 addMaybe a Nothing = a
 addMaybe (Just a) (Just b) = Just (a + b)
 
+multMaybe :: Value -> MaybeValue -> MaybeValue
+multMaybe a Nothing = Nothing
+multMaybe a  (Just b) = Just (a * b)
+
 -- Test cases for addMaybe function
 addMaybeTests =
   TestList
@@ -39,7 +43,31 @@ addMaybeTests =
           Nothing
     ]
 
+-- Test cases for multMaybe function
+multMaybeTests =
+  TestList
+    [ TestCase $
+        assertEqual "multMaybe test 1"
+          (multMaybe (5) (Just 3))
+          (Just 15)
+    , TestCase $
+        assertEqual "multMaybe test 2"
+          (multMaybe (-5) (Just 3))
+          (Just (-15))
+    , TestCase $
+        assertEqual "multMaybe test 3"
+          (multMaybe (0) Nothing)
+          (Nothing)
+    , TestCase $
+        assertEqual "multMaybe test 4"
+          (multMaybe 3 (Nothing))
+          (Nothing)
+    ]
+
 -- Run all the test cases
 runTests = do
   putStrLn "Running addMaybe tests:"
   runTestTT addMaybeTests
+
+  putStrLn "Running multMaybe tests:"
+  runTestTT multMaybeTests
