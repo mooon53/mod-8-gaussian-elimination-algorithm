@@ -45,6 +45,13 @@ reorderTests =
     ]
 
 --TODO: echelon form testings
+echelonTest = 
+    TestList[
+        TestCase $
+            assertEqual "echelon test 1"
+            (echelon ((Just 1 :> Just 2 :> Just 3 :> Just 4 :> Just 5 :> Just 6 :> Just 7 :> Just 0 :> Nil) :> (Just 2 :> Just 3 :> Just 4 :> Just 5 :> Just 6 :> Just 7 :> Just 8 :> Just 0 :> Nil) :> (Just 3 :> Just 4 :> Just 5 :> Just 6 :> Just 7 :> Just 8 :> Just 1 :> Just 0 :> Nil) :> (Just 4 :> Just 5 :> Just 6 :> Just 7 :> Just 8 :> Just 1 :> Just 2 :> Just 0 :> Nil) :> (Just 5 :> Just 6 :> Just 7 :> Just 8 :> Just 1 :> Just 2 :> Just 3 :> Just 0 :> Nil) :> (Just 6 :> Just 7 :> Just 8 :> Just 1 :> Just 2 :> Just 3 :> Just 4 :> Just 0 :> Nil) :> (Just 7 :> Just 8 :> Just 1 :> Just 2 :> Just 3 :> Just 4 :> Just 5 :> Just 0 :> Nil) :> (Just 8 :> Just 1 :> Just 2 :> Just 3 :> Just 4 :> Just 5 :> Just 6 :> Just 0 :> Nil) :> Nil))
+            ((Just 1 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 1 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 1 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 0 :> Just 1 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 1 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 1 :> Just 0 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 1 :> Just 0 :> Nil) :> (Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Just 0 :> Nil) :> Nil)
+    ]
 
 
 runTests = do
